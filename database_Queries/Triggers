@@ -1,0 +1,17 @@
+CREATE OR REPLACE FUNCTION cancel_other_proposals()
+RETURNS TRIGGER AS $$
+BEGIN
+  UPDATE designer_proposals
+  SET status = 'Cancelled'
+  WHERE request_id = NEW.request_id
+    AND proposal_id <> NEW.proposal_id
+    AND status = 'Pending';
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_cancel_pending_proposals
+AFTER UPDATE ON customization_requests
+FOR EACH ROW
+WHEN (NEW.status = 'Accepted')
+EXECUTE FUNCTION cancel_other_proposals();
