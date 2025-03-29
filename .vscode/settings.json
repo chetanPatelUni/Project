@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": {
+                    "rejectUnauthorized": true
+                }
+            },
+            "previewLimit": 50,
+            "server": "L91HORScvhbmo2j1k6c738u39d0-a.virginia-postgres.render.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "database": "styleverse",
+            "username": "user1",
+            "password": "L91HORSyNy0ttARMa9CMGaSrJhKmjTj0",
+            "name": "Styleverse"
+        }
+    ]
+}
